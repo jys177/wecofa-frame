@@ -1,4 +1,4 @@
-package wecofa.frame.aop;
+package wecofa.frame.core.aop;
 
 import org.aspectj.lang.JoinPoint;
 

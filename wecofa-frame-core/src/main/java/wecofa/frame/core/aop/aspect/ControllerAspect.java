@@ -1,4 +1,4 @@
-package wecofa.frame.aop.aspect;
+package wecofa.frame.core.aop.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import wecofa.frame.aop.AopUtil;
+import wecofa.frame.core.aop.AopUtil;
 
 @Component
 @Aspect
@@ -15,14 +15,16 @@ public class ControllerAspect {
     private final static Logger logger = LoggerFactory.getLogger(ControllerAspect.class);
 
     @Around("within(@org.springframework.stereotype.Controller *)")
-    public void aroundController(ProceedingJoinPoint joinPoint){
+    public Object aroundController(ProceedingJoinPoint joinPoint){
+        Object output=null;
         try {
             logger.info("[Ctr] around : "+AopUtil.getCallLocation(joinPoint));
-            joinPoint.proceed();
+            output=joinPoint.proceed();
             logger.info("[Ctr] around : "+AopUtil.getCallLocation(joinPoint));
         }catch (Throwable throwable) {
             throwable.printStackTrace();
         }
+        return output;
     }
 
 

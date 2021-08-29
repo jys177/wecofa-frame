@@ -1,4 +1,4 @@
-package wecofa.frame.aop.aspect;
+package wecofa.frame.core.aop.aspect;
 
 
 
@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import wecofa.frame.aop.AopUtil;
+import wecofa.frame.core.aop.AopUtil;
 
 @Component
 @Aspect
@@ -17,18 +17,21 @@ public class ServiceAspect {
     private final static Logger logger = LoggerFactory.getLogger(ServiceAspect.class);
 
     @Around("within(@org.springframework.stereotype.Service *)")
-    public void aroundService(ProceedingJoinPoint joinPoint){
+    public Object aroundService(ProceedingJoinPoint joinPoint){
+        Object output=null;
         try {
             logger.info("[Svc] around : "+AopUtil.getCallLocation(joinPoint));
-            joinPoint.proceed();
+            output=joinPoint.proceed();
             logger.info("[Svc] around : "+AopUtil.getCallLocation(joinPoint));
         }catch (Throwable throwable) {
             throwable.printStackTrace();
         }
+        return output;
     }
 
     @Before("within(@org.springframework.stereotype.Service *)")
     public void beforeService(JoinPoint joinPoint){
+
         logger.info("[Svc] before : "+ AopUtil.getCallLocation(joinPoint));
     }
 

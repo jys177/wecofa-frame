@@ -31,7 +31,6 @@ public class ThreadTest {
 
 
     public void submit(int num) {
-
         CompletableFuture<String> completableFuture =CompletableFuture.supplyAsync(()->(
                         ""+getMessage(num)+(num)),threadPool
                 );
@@ -39,7 +38,11 @@ public class ThreadTest {
     }
     public String getMessage(int num) {
         try {
-            TimeUnit.MILLISECONDS.sleep(300);
+            if(num%2==0){
+                TimeUnit.MILLISECONDS.sleep(300);
+            }else{
+                TimeUnit.MILLISECONDS.sleep(200);
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package wecofa.frame.jms;
+package wecofa.frame.core.jms;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

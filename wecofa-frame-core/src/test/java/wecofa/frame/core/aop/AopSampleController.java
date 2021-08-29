@@ -1,4 +1,4 @@
-package wecofa.frame.aop;
+package wecofa.frame.core.aop;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ public class AopSampleController {
     public Object callAopService(){
         logger.info("[PROC] Service Call");
         Object result= sampleService.executeService("Sample Work");
-        logger.info("[PROC] Service Return");
+        logger.info("[PROC] Service Return {}",result);
         return result;
     }
 

@@ -1,4 +1,4 @@
-package wecofa.frame.jms;
+package wecofa.frame.core.jms;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.listener.SessionAwareMessageListener;

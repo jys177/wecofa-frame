@@ -1,4 +1,4 @@
-package wecofa.frame.filter;
+package wecofa.frame.core.filter;
 
 public class SampleVo {
     private String sampleId;
