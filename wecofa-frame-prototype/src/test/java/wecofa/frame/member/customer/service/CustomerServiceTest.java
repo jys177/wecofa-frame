@@ -21,16 +21,7 @@ public class CustomerServiceTest {
     @Autowired
     private CustomerService customerService;
 
-   /* @Test
-    public void createTest(){
-        Customer customer = new Customer();
-        customer.setCusId("CUS-00002");
-        customer.setCusName("CUS-NAME-001");
-        customer.setCusBalance(100000);
-        customer.setCusBirthday(java.sql.Date.valueOf("2004-06-22"));
 
-        customerService.createMember(customer);
-    }*/
     @Test
     public void deleteTest(){
         //customerService.deleteMember(Long.valueOf(2));
