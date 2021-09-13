@@ -1,18 +1,25 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
-import Routes from "./route/Routes";
 import {BrowserRouter} from "react-router-dom";
+import LoginMenu from "./menu/LoginMenu";
+import LoginRouter from "./route/LoginRouter";
+import TopMenu from "./menu/TopMenu";
+import HomeRouter from "./route/HomeRouter";
 
 function App() {
+    let isAuthorized = sessionStorage.getItem("isAuthorized");
   return (
     <div className="App">
         <BrowserRouter>
-            <Routes/>
+            <header>
+                {!isAuthorized?<LoginMenu/>:<TopMenu/>}
+            </header>
+            <main>
+                {!isAuthorized?<LoginRouter/>:<HomeRouter/>}
+            </main>
         </BrowserRouter>
     </div>
   );
 }
-
-
 export default App;
