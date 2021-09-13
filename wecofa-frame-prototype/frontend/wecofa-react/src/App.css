@@ -19,6 +19,16 @@ body{
   font-weight: 600;
   font-size: 20px;
 }
+.login-form{
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
+.sign-form{
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
 .model{
   margin-top: 20px;
   padding:20px;

@@ -1,13 +1,15 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
-import TopMenuComponent from './components/TopMenuComponent';
+import Routes from "./route/Routes";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
-
   return (
     <div className="App">
-      <div><TopMenuComponent></TopMenuComponent></div>
+        <BrowserRouter>
+            <Routes/>
+        </BrowserRouter>
     </div>
   );
 }
