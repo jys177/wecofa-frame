@@ -15,17 +15,20 @@ function Login(){
     }
     const onClickLogin=()=>{
         console.log('click login')
-        axios.post('/user_inform/login',null,{
+        axios.post('/users/login_user',null,{
+            headers:{
+                "Content-Type": `application/json`
+            },
             params:{
-                'user_id':inputId,
-                'user_pw':inputPw
+                'userId':inputId,
+                'userPw':inputPw
             }
         }).then(res=>console.log(res))
             .catch()
     }
 
     useEffect(()=>{
-        axios.get('/user_inform/login')
+        axios.get('/users/user')
             .then(res=> console.log(res))
             .catch()
     },[])
@@ -36,7 +39,7 @@ function Login(){
               <Form>
                   <div className="d-grid gap-2">
                       <Form.Group className="mb-3" controlId="loginId">
-                          <Form.Control type="email" placeholder="이메일 주소" value={inputId} onChange={handleInputId}/>
+                          <Form.Control type="id" placeholder="이메일 주소" value={inputId} onChange={handleInputId}/>
                       </Form.Group>
                       <Form.Group className="mb-3" controlId="loginPw">
                           <Form.Control type="password" placeholder="비밀번호" value={inputPw} onChange={handleInputPw}/>

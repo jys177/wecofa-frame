@@ -1,7 +1,6 @@
 package wecofa.frame.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -60,12 +59,8 @@ public class WebConfig implements WebMvcConfigurer {
      * */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        //registry.addResourceHandler("/resources/static/js/**").addResourceLocations("classpath:/public/static/js/");
-        //registry.addResourceHandler("/resources/static/css/**").addResourceLocations("classpath:/public/static/css/");
-        //registry.addResourceHandler("/resources/public/**").addResourceLocations("/resources/public/");
-        //registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/resources/");
         registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/public/")
+                .addResourceLocations("classpath:")
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver(){
                     @Override
@@ -74,15 +69,14 @@ public class WebConfig implements WebMvcConfigurer {
                         if(requestedResource.exists()&&requestedResource.isReadable()){
                             return requestedResource;
                         }else{
-                            return new ClassPathResource("/public/index.html");
+                            return new ClassPathResource("/index.html");
                         }
                     }
                 });
-       // registry.addResourceHandler("/**").addResourceLocations("classpath:/public/");
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addRedirectViewController("/", "/index.html");
+        //registry.addRedirectViewController("/", "/home");
     }
 }

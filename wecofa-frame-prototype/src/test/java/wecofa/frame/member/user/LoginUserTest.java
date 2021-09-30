@@ -57,14 +57,14 @@ public class LoginUserTest {
 
     @Test
     public void loginUserTest() throws Exception{
-        this.mockMvc.perform(get("/users/login_user").session(session)
+        this.mockMvc.perform(get("/users/user").session(session)
         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
     @Test
     public void loginUserTestMessage() throws Exception{
-        this.mockMvc.perform(get("/users/login_user/message").session(session)
+        this.mockMvc.perform(get("/users/user/message").session(session)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());

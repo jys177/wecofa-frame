@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import wecofa.frame.member.user.entity.User;
@@ -18,16 +19,22 @@ public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @GetMapping(path = "/login_user" , consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/user" , consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getLoginUser(@LoginUser User user){
         logger.debug("Resolve LoginUser : {} ",user);
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
-    @GetMapping(path = "/login_user/message" , consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/user/message" , consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Message> getLoginUserMessage(@LoginUser User user){
         logger.debug("Resolve LoginUser : {} ",user);
         Message message = new Message(HttpStatus.OK,"SUCCESS",user);
+        return new ResponseEntity<Message>(message, HttpStatus.OK);
+    }
+    @PostMapping(path = "/login_user", consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Message> login(User user){
+        Message message = new Message(HttpStatus.OK,"SUCCESS",user);
+        logger.debug("input message : {}",message.toString());
         return new ResponseEntity<Message>(message, HttpStatus.OK);
     }
 }

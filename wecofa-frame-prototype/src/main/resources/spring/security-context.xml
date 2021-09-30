@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xmlns:oauth2="http://www.springframework.org/schema/security/oauth2"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/security/oauth2 https://www.springframework.org/schema/security/spring-security-oauth2.xsd
+                            http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd">
+
+    <bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
+        <constructor-arg>
+            <list>
+                <sec:filter-chain pattern="/restful/**" filters="
+                    securityContextPersistenceFilterWithASCFalse,
+                    basicAuthenticationFilter,
+                    exceptionTranslationFilter,
+                    filterSecurityInterceptor" />
+                <sec:filter-chain pattern="/**" filters="
+                    securityContextPersistenceFilterWithASCTrue,
+                    formLoginFilter,
+                    exceptionTranslationFilter,
+                    filterSecurityInterceptor" />
+            </list>
+        </constructor-arg>
+    </bean>
+    <oauth2:client id="securityContextPersistenceFilterWithASCFalse"/>
+    <oauth2:client id="filterSecurityInterceptor"/>
+    <oauth2:client id="securityContextPersistenceFilterWithASCTrue"/>
+    <oauth2:client id="formLoginFilter"/>
+    <oauth2:client id="basicAuthenticationFilter"/>
+    <oauth2:client id="exceptionTranslationFilter"/>
+</beans>

@@ -18,9 +18,37 @@
         <log4j2.version>2.14.1</log4j2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring.security.version>5.5.2</spring.security.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>2.5.1.RELEASE</version>
+        </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>wecofa-frame-core</artifactId>
@@ -134,7 +162,7 @@
                         <phase>generate-resources</phase> <!-- 리소스 생성 -->
                         <configuration>
                             <target>
-                                <copy todir="${project.build.directory}/classes/public">  <!-- 복사할 디렉토리 설정 -->
+                                <copy todir="${project.build.directory}/classes">  <!-- 복사할 디렉토리 설정 -->
                                     <fileset dir="${project.basedir}/frontend/wecofa-react/build"/>  <!-- 가져올 디렉토리 및 파일 -->
                                 </copy>
                             </target>

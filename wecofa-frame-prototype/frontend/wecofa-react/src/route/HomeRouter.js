@@ -8,6 +8,7 @@ function HomeRouter() {
     return(
         <Switch>
             <Route exact path='/' component={Home}></Route>
+            <Route path='/home' component={Home}></Route>
             <Route path='/main' component={Main}></Route>
             <Route path='/board' component={Board}></Route>
         </Switch>
