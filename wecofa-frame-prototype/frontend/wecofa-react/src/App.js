@@ -15,9 +15,9 @@ function App() {
             <header>
                 {!isAuthorized?<LoginMenu/>:<TopMenu/>}
             </header>
-            <main>
+            <body>
                 {!isAuthorized?<LoginRouter/>:<HomeRouter/>}
-            </main>
+            </body>
         </BrowserRouter>
     </div>
   );

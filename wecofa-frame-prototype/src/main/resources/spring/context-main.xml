@@ -11,7 +11,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.RestController"/>
 
     </context:component-scan>
-    <import resource="context-aop.xml"/>
-    <import resource="context-view.xml"/>
-    <import resource="context-datasource.xml"/>
+    <import resource="classpath:/spring/context-aop.xml"/>
+    <import resource="classpath:/spring/context-view.xml"/>
+    <import resource="classpath:/spring/context-datasource.xml"/>
 </beans>
