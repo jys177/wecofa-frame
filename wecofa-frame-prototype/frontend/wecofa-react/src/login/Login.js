@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState} from "react";
 import {Button, Form} from 'react-bootstrap';
 import axios from "axios";
 import {useHistory} from "react-router-dom";
@@ -6,6 +6,14 @@ import {useHistory} from "react-router-dom";
 function Login(){
     const [inputId,setInputId] = useState('')
     const [inputPw,setInputPw] = useState('')
+
+    let[message,setMessage] = useState('');
+
+    function hookMessage(str){
+        setMessage(str);
+    }
+
+
     const history = useHistory();
     const handleInputId = (e)=>{
         setInputId(e.target.value)
@@ -23,18 +31,24 @@ function Login(){
                 'userId':inputId,
                 'userPw':inputPw
             }
-        }).then(res=>console.log(res))
-            .catch()
+        }).then(
+            res=>{
+                sessionStorage.setItem(res.data.data('isAuthorized'),'true')
+                console.log('response message : '+res)
+                console.log('response res :'+res.data)
+                hookMessage(res.data)
+            }
+        ).catch(
+            error=>{
+                console.log(error)
+            }
+        )
     }
 
-    useEffect(()=>{
-        axios.get('/users/user')
-            .then(res=> console.log(res))
-            .catch()
-    },[])
     return(
       <div>
           <h2>Login Page</h2>
+          <div> 메세지 : {message}</div>
           <div className="login-form">
               <Form>
                   <div className="d-grid gap-2">

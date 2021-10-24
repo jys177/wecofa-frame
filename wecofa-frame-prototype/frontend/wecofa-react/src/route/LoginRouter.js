@@ -1,15 +1,14 @@
 import {Route} from "react-router-dom";
 import Login from "../login/Login";
 import SignIn from "../login/SignIn";
-import Switch from "react-bootstrap/Switch";
 import React from "react";
 
 function LoginRouter() {
     return(
-        <Switch>
+        <div>
             <Route exact path="/" component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/sign" component={SignIn} />
-        </Switch>
+        </div>
     );
 }export default LoginRouter
