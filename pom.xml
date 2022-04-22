@@ -17,7 +17,7 @@
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
-        <springframework.version>5.3.8</springframework.version>
+        <springframework.version>5.3.19</springframework.version>
         <aspectj.version>1.9.6</aspectj.version>
     </properties>
 
